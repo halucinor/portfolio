@@ -9,7 +9,7 @@
 project = '포트폴리오'
 copyright = '2025, Seungju Baek'
 author = 'Seungju Baek'
-release = '1.0.0'
+release = '0.4.0'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

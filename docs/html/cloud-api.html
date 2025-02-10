@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Openstack 기반 클라우드 플랫폼 API &mdash; 포트폴리오 1.0.0 문서</title>
+  <title>Openstack 기반 클라우드 플랫폼 개발 &mdash; 포트폴리오 0.4.0 문서</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=c827069a" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=5a0dd2f0"></script>
+      <script src="_static/documentation_options.js?v=bb59c293"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/translations.js?v=afa94a99"></script>
@@ -47,12 +47,11 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="project.html">프로젝트</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Openstack 기반 클라우드 플랫폼 API</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Openstack 기반 클라우드 플랫폼 개발</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">프로젝트 개요</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">역할 및 기여</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">개발 환경</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id4">아키텍처</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#kafka">Kafka 기반 메시지 컨슈머</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="cloud-alarm.html">클라우드 자원 사용률 알람 서비스</a></li>
@@ -80,7 +79,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="project.html">프로젝트</a></li>
-      <li class="breadcrumb-item active">Openstack 기반 클라우드 플랫폼 API</li>
+      <li class="breadcrumb-item active">Openstack 기반 클라우드 플랫폼 개발</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/cloud-api.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -90,22 +89,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="openstack-api">
-<h1>Openstack 기반 클라우드 플랫폼 API<a class="headerlink" href="#openstack-api" title="Link to this heading"></a></h1>
+  <section id="openstack">
+<h1>Openstack 기반 클라우드 플랫폼 개발<a class="headerlink" href="#openstack" title="Link to this heading"></a></h1>
+<p><strong>수행 기간 : 2023.06 ~ 현재</strong></p>
 <section id="id1">
 <h2>프로젝트 개요<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
 </section>
 <section id="id2">
 <h2>역할 및 기여<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Kafka 메시지 컨슈머 개발</p></li>
+</ul>
 </section>
 <section id="id3">
 <h2>개발 환경<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Python 3.11</p></li>
+<li><p>FastAPI, Sqlalchemy, alembic</p></li>
+<li><p>MySql, Redis, Kafka</p></li>
+<li><p>Gitlab CI/CD</p></li>
+</ul>
 </section>
 <section id="id4">
 <h2>아키텍처<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
-</section>
-<section id="kafka">
-<h2>Kafka 기반 메시지 컨슈머<a class="headerlink" href="#kafka" title="Link to this heading"></a></h2>
+<a class="reference internal image-reference" href="_images/cloud-api-architecture.png"><img alt="_images/cloud-api-architecture.png" class="align-center" src="_images/cloud-api-architecture.png" style="width: 800px;" />
+</a>
 </section>
 </section>
 

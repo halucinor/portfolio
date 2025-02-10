@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>클라우드 자원 사용률 알람 서비스 &mdash; 포트폴리오 1.0.0 문서</title>
+  <title>클라우드 자원 사용률 알람 서비스 &mdash; 포트폴리오 0.4.0 문서</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=c827069a" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=5a0dd2f0"></script>
+      <script src="_static/documentation_options.js?v=bb59c293"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/translations.js?v=afa94a99"></script>
@@ -22,7 +22,7 @@
     <link rel="index" title="색인" href="genindex.html" />
     <link rel="search" title="검색" href="search.html" />
     <link rel="next" title="고객 사설 대역 메트릭 수집 시스템" href="cloud-tunnel.html" />
-    <link rel="prev" title="Openstack 기반 클라우드 플랫폼 API" href="cloud-api.html" /> 
+    <link rel="prev" title="Openstack 기반 클라우드 플랫폼 개발" href="cloud-api.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -47,13 +47,14 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="project.html">프로젝트</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="cloud-api.html">Openstack 기반 클라우드 플랫폼 API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-api.html">Openstack 기반 클라우드 플랫폼 개발</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">클라우드 자원 사용률 알람 서비스</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id2">프로젝트 개요</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">핵심 기능</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">개발 환경</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">아키텍처</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">의존성 구조</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">핵심 기능</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">역할 및 기여</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">개발 환경</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">아키텍처</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">의존성 구조</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#erd">ERD</a></li>
 </ul>
 </li>
@@ -93,21 +94,34 @@
              
   <section id="id1">
 <h1>클라우드 자원 사용률 알람 서비스<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<p><strong>수행기간 : 2024.09 ~ 2024.11</strong></p>
 <section id="id2">
 <h2>프로젝트 개요<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
-</section>
-<section id="id3">
-<h2>핵심 기능<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>클라우드 자원의 <code class="docutils literal notranslate"><span class="pre">CPU</span></code>, <code class="docutils literal notranslate"><span class="pre">메모리</span></code>, <code class="docutils literal notranslate"><span class="pre">디스크</span></code> 사용량에 대한 알람 설정</p></li>
-<li><p>클라우드 자원의 <code class="docutils literal notranslate"><span class="pre">네트워크</span></code> 사용량에 대한 알람 설정</p></li>
-<li><p>모니터링 시스템 (Zabbix, 네트워크 트래픽 모니터링 시스템)과의 연동</p></li>
+<li><p>클라우드 자원 <a class="footnote-reference brackets" href="#id10" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> 의 사용률을 모니터링</p></li>
+<li><p>사용률이 일정 수준 이상(임계치)으로 증가할 경우 등록된 사용자에게 알람 발송</p></li>
+</ul>
+</section>
+<section id="id4">
+<h2>핵심 기능<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>클라우드 자원의 <code class="docutils literal notranslate"><span class="pre">CPU</span></code>, <code class="docutils literal notranslate"><span class="pre">메모리</span></code>, <code class="docutils literal notranslate"><span class="pre">디스크</span></code>, <code class="docutils literal notranslate"><span class="pre">네트워트</span></code> 사용량에 대한 알람 설정</p></li>
+<li><p>모니터링 시스템 <a class="footnote-reference brackets" href="#id11" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> 과의 연동</p></li>
 <li><p>모니터링 시스템으로 부터 발생하는 알람 신호 처리</p></li>
 <li><p>알람 발송 처리 (<code class="docutils literal notranslate"><span class="pre">SMS</span></code>, <code class="docutils literal notranslate"><span class="pre">Email</span></code>)</p></li>
 </ul>
 </section>
-<section id="id4">
-<h2>개발 환경<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<section id="id6">
+<h2>역할 및 기여<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>시스템, 소프트웨어 아키텍처, DB 스키마 설계</p></li>
+<li><p>FastAPI 서버 구현</p></li>
+<li><p>네트워크 트래픽 수집 스케줄러 구현</p></li>
+<li><p>프로젝트 매니저</p></li>
+</ul>
+</section>
+<section id="id7">
+<h2>개발 환경<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>FastAPI, Sqlalchemy, alembic</p></li>
 <li><p>Python Apscheduler</p></li>
@@ -115,14 +129,24 @@
 <li><p>MySql</p></li>
 </ul>
 </section>
-<section id="id5">
-<h2>아키텍처<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<section id="id8">
+<h2>아키텍처<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
 </section>
-<section id="id6">
-<h2>의존성 구조<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<section id="id9">
+<h2>의존성 구조<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
 </section>
 <section id="erd">
 <h2>ERD<a class="headerlink" href="#erd" title="Link to this heading"></a></h2>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id10" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">1</a><span class="fn-bracket">]</span></span>
+<p>클라우드 자원: 인스턴스, 네트워크, 스토리지 등 클라우드 서비스의 자원</p>
+</aside>
+<aside class="footnote brackets" id="id11" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">2</a><span class="fn-bracket">]</span></span>
+<p>Zabbix, TMS: 모니터링 시스템</p>
+</aside>
+</aside>
 </section>
 </section>
 
@@ -130,7 +154,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="cloud-api.html" class="btn btn-neutral float-left" title="Openstack 기반 클라우드 플랫폼 API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cloud-api.html" class="btn btn-neutral float-left" title="Openstack 기반 클라우드 플랫폼 개발" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="cloud-tunnel.html" class="btn btn-neutral float-right" title="고객 사설 대역 메트릭 수집 시스템" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

@@ -25,3 +25,8 @@ Openstack Keystone 소개 및 분석 발표
 
 보일러플레이트 프로젝트 소개
 ----------------------------
+
+Openstack 동적 플러그인 로딩 발표
+---------------------------------
+
+https://slow-nutria-872.notion.site/Stevedore-db18965757cf4baa857e369933d57e48
