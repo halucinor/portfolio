@@ -7,10 +7,10 @@ About Me
 .. raw:: html
 
     <div style="display: flex ; padding-left : 30px; align-items: center;">
-        <div style="flex: 1;">
+        <div style="flex: 0.6;">
             <img src="_static/사진.png" alt="명함 사진";>
         </div>
-        <div style="flex: 2;">
+        <div style="flex: 4;">
             <p style="line-height: 170%;">
             가비아 클라우드 개발팀에서 Openstack 기반 클라우드 플랫폼 시스템 개발에 참여하고 있는 백엔드 개발자 입니다.<br/>
             Python을 주로 사용하며, FastAPI 프레임워크를 사용해 API 서버를 개발하고 있습니다.<br/>
