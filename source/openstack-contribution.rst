@@ -15,7 +15,9 @@ Openstack SDK 기여 내역
     :align: center
     :width: 800px
 
-- `리뷰 내역 <https://review.opendev.org/c/openstack/openstacksdk/+/891089>`_
+
+- 리뷰 내역 : https://review.opendev.org/c/openstack/openstacksdk/+/891089
+
 
 ----
 
@@ -29,7 +31,8 @@ Openstack SDK 기여 내역
     :align: center
     :width: 800px
 
-- `리뷰 내역 <https://review.opendev.org/c/openstack/openstacksdk/+/892156>`_
+- 리뷰 내역 https://review.opendev.org/c/openstack/openstacksdk/+/892156
+
 
 ----
 
@@ -43,4 +46,5 @@ Openstack SDK 기여 내역
     :align: center
     :width: 800px
 
-- `리뷰 내역 <https://review.opendev.org/c/openstack/openstacksdk/+/921863>`_
+
+- 리뷰 내역 https://review.opendev.org/c/openstack/openstacksdk/+/921863

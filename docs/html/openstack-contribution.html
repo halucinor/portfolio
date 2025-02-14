@@ -20,7 +20,9 @@
       <script src="_static/translations.js?v=afa94a99"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="색인" href="genindex.html" />
-    <link rel="search" title="검색" href="search.html" /> 
+    <link rel="search" title="검색" href="search.html" />
+    <link rel="next" title="세미나 발표" href="presentation.html" />
+    <link rel="prev" title="활동" href="outside-work.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -43,9 +45,20 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="project.html">프로젝트</a></li>
-<li class="toctree-l1"><a class="reference internal" href="outside-work.html">활동</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="outside-work.html">활동</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Openstack 기여</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#openstack-sdk">Openstack SDK 기여 내역</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#stack-action">1. stack._action() 예외처리 로직 추가</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stack-suspend-resume">2. stack suspend, resume 기능 추가</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">3. 누락 문서 추가</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="presentation.html">세미나 발표</a></li>
 <li class="toctree-l1"><a class="reference internal" href="award.html">수상 내역</a></li>
 </ul>
@@ -64,6 +77,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="outside-work.html">활동</a></li>
       <li class="breadcrumb-item active">Openstack 기여</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/openstack-contribution.rst.txt" rel="nofollow"> View page source</a>
@@ -87,7 +101,7 @@
 <a class="reference internal image-reference" href="_images/오픈스택-stack-action.png"><img alt="_images/%EC%98%A4%ED%94%88%EC%8A%A4%ED%83%9D-stack-action.png" class="align-center" src="_images/%EC%98%A4%ED%94%88%EC%8A%A4%ED%83%9D-stack-action.png" style="width: 800px;" />
 </a>
 <ul class="simple">
-<li><p><a class="reference external" href="https://review.opendev.org/c/openstack/openstacksdk/+/891089">리뷰 내역</a></p></li>
+<li><p>리뷰 내역 : <a class="reference external" href="https://review.opendev.org/c/openstack/openstacksdk/+/891089">https://review.opendev.org/c/openstack/openstacksdk/+/891089</a></p></li>
 </ul>
 </section>
 <hr class="docutils" />
@@ -100,12 +114,12 @@
 <a class="reference internal image-reference" href="_images/오픈스택-suspend-resume.png"><img alt="_images/%EC%98%A4%ED%94%88%EC%8A%A4%ED%83%9D-suspend-resume.png" class="align-center" src="_images/%EC%98%A4%ED%94%88%EC%8A%A4%ED%83%9D-suspend-resume.png" style="width: 800px;" />
 </a>
 <ul class="simple">
-<li><p><a class="reference external" href="https://review.opendev.org/c/openstack/openstacksdk/+/892156">리뷰 내역</a></p></li>
+<li><p>리뷰 내역 <a class="reference external" href="https://review.opendev.org/c/openstack/openstacksdk/+/892156">https://review.opendev.org/c/openstack/openstacksdk/+/892156</a></p></li>
 </ul>
 </section>
 <hr class="docutils" />
-<section id="id3">
-<h3>3. 누락 문서 추가<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<section id="id1">
+<h3>3. 누락 문서 추가<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Openstack SDK에서 stack 기능을 설명하는 문서가 누락되어 해당 문서를 추가</p></li>
 <li><p>추가 된 문서 링크 - <a class="reference external" href="https://docs.openstack.org/openstacksdk/latest/user/proxies/orchestration.html#stack-operations%20%20Copy">Orchestration API — openstacksdk 4.2.1.dev14 documentation</a></p></li>
@@ -113,7 +127,7 @@
 <a class="reference internal image-reference" href="_images/오픈스택-stack-docs.png"><img alt="_images/%EC%98%A4%ED%94%88%EC%8A%A4%ED%83%9D-stack-docs.png" class="align-center" src="_images/%EC%98%A4%ED%94%88%EC%8A%A4%ED%83%9D-stack-docs.png" style="width: 800px;" />
 </a>
 <ul class="simple">
-<li><p><a class="reference external" href="https://review.opendev.org/c/openstack/openstacksdk/+/921863">리뷰 내역</a></p></li>
+<li><p>리뷰 내역 <a class="reference external" href="https://review.opendev.org/c/openstack/openstacksdk/+/921863">https://review.opendev.org/c/openstack/openstacksdk/+/921863</a></p></li>
 </ul>
 </section>
 </section>
@@ -122,7 +136,10 @@
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="outside-work.html" class="btn btn-neutral float-left" title="활동" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="presentation.html" class="btn btn-neutral float-right" title="세미나 발표" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
