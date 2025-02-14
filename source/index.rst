@@ -7,7 +7,7 @@ About Me
 .. raw:: html
 
     <div style="display: flex ; padding-left : 30px; align-items: center;">
-        <div style="flex: 0.6;">
+        <div style="flex: 1.5;">
             <img src="_static/사진.png" alt="명함 사진";>
         </div>
         <div style="flex: 4;">
