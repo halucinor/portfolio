@@ -22,7 +22,7 @@
     <link rel="index" title="색인" href="genindex.html" />
     <link rel="search" title="검색" href="search.html" />
     <link rel="next" title="활동" href="outside-work.html" />
-    <link rel="prev" title="비동기 프로세스 설계 및 구현" href="async-queue.html" /> 
+    <link rel="prev" title="비동기 프로세스 설계 및 구현" href="cloud-task-manager.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -48,8 +48,8 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="project.html">프로젝트</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="cloud-api.html">Openstack 기반 클라우드 플랫폼 개발</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cloud-alarm.html">클라우드 자원 사용률 알람 서비스(cloud-alarm)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="async-queue.html">비동기 프로세스 설계 및 구현</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-alarm.html">클라우드 자원 사용률 알람 서비스</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-task-manager.html">비동기 프로세스 설계 및 구현</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">공통 CI/CD 파이프라인</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">프로젝트 개요</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">핵심 기능</a></li>
@@ -131,16 +131,19 @@
 <h2>성과<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
 <section id="before">
 <h3>Before<a class="headerlink" href="#before" title="Link to this heading"></a></h3>
-<ul class="simple">
+<blockquote>
+<div><ul class="simple">
 <li><p>레포 마다 독립적인 CI/CD 스크립트를 사용하고 있어 유지보수가 어려움</p></li>
 <li><p>CI/CD 를 실행 시키기 위한 helm template, 패키징 관련 파일이 모든 레포지토리에 존재</p></li>
 </ul>
 <a class="reference internal image-reference" href="_images/파이프라인-파일.png"><img alt="_images/%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8-%ED%8C%8C%EC%9D%BC.png" class="align-center" src="_images/%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8-%ED%8C%8C%EC%9D%BC.png" style="width: 800px;" />
 </a>
+</div></blockquote>
 </section>
 <section id="after">
 <h3>After<a class="headerlink" href="#after" title="Link to this heading"></a></h3>
-<ul class="simple">
+<blockquote>
+<div><ul class="simple">
 <li><p>CI/CD 관련 템플릿을 하나의 소스에서 관리할 수 있게 개선</p></li>
 <li><p>프로젝트에 CI/CD 파이프라인을 적용하기 쉽게 개선</p></li>
 <li><p>파이프라인 STEP/JOB을 추가하기 쉬운 형태로 변경</p></li>
@@ -148,10 +151,92 @@
 </ul>
 <a class="reference internal image-reference" href="_images/파이프라인-결과.png"><img alt="_images/%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8-%EA%B2%B0%EA%B3%BC.png" class="align-center" src="_images/%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8-%EA%B2%B0%EA%B3%BC.png" style="width: 800px;" />
 </a>
+</div></blockquote>
 </section>
 </section>
 <section id="id6">
 <h2>예시 스크립트<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># .gitlab-ci.yml</span>
+<span class="c1"># 공통 파이프라인 프로젝트에서 job include</span>
+<span class="nt">include</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">project</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cloud/backend/cloud-pipeline</span>
+<span class="w">    </span><span class="nt">file</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jobs/poetry-test.yml</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jobs/prepare-ci.yml</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jobs/pages-ci.yml</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jobs/build-ci.yml</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jobs/deploy-ci.yml</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jobs/poetry-init.yml</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">feature.gitlab-ci.yml</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">develop.gitlab-ci.yml</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qa.gitlab-ci.yml</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prod.gitlab-ci.yml</span>
+
+
+<span class="nt">variables</span><span class="p">:</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">&lt;some variables&gt;</span>
+
+
+<span class="nt">stages</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prepare_page</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pages</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">package</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy</span>
+
+
+<span class="nt">.develop-settings</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;develop-settings</span>
+<span class="w">  </span><span class="nt">only</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">develop</span>
+<span class="w">  </span><span class="nt">tags</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cloud</span>
+
+<span class="nt">api-page</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">&lt;&lt;</span><span class="p">:</span><span class="w"> </span><span class="nv">*develop-settings</span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prepare_page</span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nikolaik/python-nodejs:python3.11-nodejs18</span>
+<span class="w">  </span><span class="nt">extends</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.poetry_init</span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">BUILD_TYPE=local ENV_FILE=.env.sample poetry run \</span>
+<span class="w">      </span><span class="no">python infra/docs/extract_openapi.py --app main:create_app --app-dir ./app/main</span>
+<span class="w">      </span><span class="no">npx @redocly/cli build-docs -o api/index.html openapi.yaml</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mv openapi.yaml public/</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cp -r api public</span>
+<span class="w">  </span><span class="nt">artifacts</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">paths</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">public</span>
+
+<span class="nt">docs-page</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">&lt;&lt;</span><span class="p">:</span><span class="w"> </span><span class="nv">*develop-settings</span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prepare_page</span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python:3.11</span>
+<span class="w">  </span><span class="nt">extends</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.poetry_init</span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">. docs/plantuml_init.sh</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">poetry run make html</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cp -r docs/build/html public</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mv public/html public/docs</span>
+<span class="w">  </span><span class="nt">artifacts</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">paths</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">public</span>
+
+<span class="nt">pages</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">only</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">refs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/^develop$/</span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pages</span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;publish pages&quot;</span>
+<span class="w">  </span><span class="nt">artifacts</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">paths</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">public</span>
+<span class="w">  </span><span class="nt">tags</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cloud</span>
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -159,7 +244,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="async-queue.html" class="btn btn-neutral float-left" title="비동기 프로세스 설계 및 구현" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cloud-task-manager.html" class="btn btn-neutral float-left" title="비동기 프로세스 설계 및 구현" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="outside-work.html" class="btn btn-neutral float-right" title="활동" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

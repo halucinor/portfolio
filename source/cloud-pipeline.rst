@@ -37,30 +37,31 @@
 Before
 ^^^^^^
 
-- 레포 마다 독립적인 CI/CD 스크립트를 사용하고 있어 유지보수가 어려움
-- CI/CD 를 실행 시키기 위한 helm template, 패키징 관련 파일이 모든 레포지토리에 존재
+    - 레포 마다 독립적인 CI/CD 스크립트를 사용하고 있어 유지보수가 어려움
+    - CI/CD 를 실행 시키기 위한 helm template, 패키징 관련 파일이 모든 레포지토리에 존재
 
-.. image:: _static/cloud-pipeline/파이프라인-파일.png
-    :align: center
-    :width: 800px
+    .. image:: _static/cloud-pipeline/파이프라인-파일.png
+        :align: center
+        :width: 800px
 
 
 After
 ^^^^^
 
-- CI/CD 관련 템플릿을 하나의 소스에서 관리할 수 있게 개선
-- 프로젝트에 CI/CD 파이프라인을 적용하기 쉽게 개선
-- 파이프라인 STEP/JOB을 추가하기 쉬운 형태로 변경
-- 실제로 사용하는 스크립트 라인 90% 감소
+    - CI/CD 관련 템플릿을 하나의 소스에서 관리할 수 있게 개선
+    - 프로젝트에 CI/CD 파이프라인을 적용하기 쉽게 개선
+    - 파이프라인 STEP/JOB을 추가하기 쉬운 형태로 변경
+    - 실제로 사용하는 스크립트 라인 90% 감소
 
-.. image:: _static/cloud-pipeline/파이프라인-결과.png
-    :align: center
-    :width: 800px
+    .. image:: _static/cloud-pipeline/파이프라인-결과.png
+        :align: center
+        :width: 800px
 
 예시 스크립트
 -------------
 
 .. code-block:: yaml
+
     # .gitlab-ci.yml
     # 공통 파이프라인 프로젝트에서 job include
     include:
