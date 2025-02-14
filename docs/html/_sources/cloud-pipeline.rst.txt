@@ -61,7 +61,7 @@ After
 -------------
 
 .. code-block:: yaml
-
+    # .gitlab-ci.yml
     # 공통 파이프라인 프로젝트에서 job include
     include:
       - project: cloud/backend/cloud-pipeline

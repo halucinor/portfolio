@@ -5,5 +5,5 @@
 
    cloud-api
    cloud-alarm
-   cloud-tunnel
+   async-queue
    cloud-pipeline
