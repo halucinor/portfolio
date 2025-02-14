@@ -10,8 +10,8 @@ Openstack 기반 클라우드 플랫폼 개발
 
 - 가상 Network(VPC) API
 - Volume(Block Storage) API
-- sshkey API
-- 피어링 게이트웨이 API
+- SSHkey API
+- Peering Gateway API
 - NAS API
 
 
@@ -37,7 +37,8 @@ Openstack 기반 클라우드 플랫폼 개발
 ^^^^^^^^^
 
     - FastAPI를 활용한 프로젝트 구조 설계/구현
-    - 관련된 DB 스키마, API 스펙 설계/구현
+    - 클라우드 자원과 관련된 DB 스키마, API 스펙 설계/구현
+    - 비동기 프로세스 설계 및 구현
 
 개선 사항
 ^^^^^^^^^
@@ -48,8 +49,7 @@ Openstack 기반 클라우드 플랫폼 개발
         - 마이그레이션으로 얻을 수 있는 기술적 이점을 고려(typing, 쿼리 성능 개선 등)
 
     2. alembic 도입을 통한 DB 버전 관리
-        - 기존 프로젝트들은 개발자의 로컬 환경, 배포 환경(개발, QA, Production) 간 DB를 수동으로 DML을 실행
-        해 관리
+        - 기존 프로젝트들은 개발자의 로컬 환경, 배포 환경(개발, QA, Production) 간 DB를 수동으로 DML을 실행해 관리
         - 또한 QA, Product 환경은 dbsafer로 팀장 결재 이후 DML 쿼리를 실행해야 하는 프로세스가 존재
         - alembic을 도입, 배포 후 애플리케이션 실행 시점에 자동으로 최신 버전의 DB로 업그레이드할 수 있게 개선
 
@@ -70,4 +70,3 @@ Openstack 기반 클라우드 플랫폼 개발
         - dependency injector 라이브러리를 사용하여 의존성을 외부에서 주입 가능한 형태로 변경
         - 작업 단위 패턴(UoW)을 적용해 서비스 레이어에서 DB작업에 대한 원자성을 유지할 수 있게 변경
         - 공통 기능을 uility 패키지로 만들어 라이브러리를 팀 내에서 공유해서 사용할 수 있게 변경
-
