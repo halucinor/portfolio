@@ -26,7 +26,7 @@
 2023년 활동
 -----------
 
-    ..image:: _static/seminar/2023-seminar.png
+    .. image:: _static/seminar/2023-seminar.png
         :align: center
         :width: 800px
 
@@ -35,7 +35,7 @@
 2024년 활동
 -----------
 
-    ..image:: _static/seminar/2024-seminar.png
+    .. image:: _static/seminar/2024-seminar.png
         :align: center
         :width: 800px
 
