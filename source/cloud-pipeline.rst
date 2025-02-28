@@ -1,6 +1,8 @@
 공통 CI/CD 파이프라인
 =====================
 
+**수행 기간 : 2024.08 ~ 2024.09 (2개월)**
+
 프로젝트 개요
 -------------
 
@@ -39,6 +41,11 @@ Before
 
     - 레포 마다 독립적인 CI/CD 스크립트를 사용하고 있어 유지보수가 어려움
     - CI/CD 를 실행 시키기 위한 helm template, 패키징 관련 파일이 모든 레포지토리에 존재
+
+
+    .. image:: _static/cloud-pipeline/표준-파이프라인-예시.png
+        :align: center
+        :width: 800px
 
     .. image:: _static/cloud-pipeline/파이프라인-파일.png
         :align: center

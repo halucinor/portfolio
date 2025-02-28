@@ -19,6 +19,7 @@ Openstack 기반 클라우드 플랫폼 개발
 ---------
 
 - Python 3.11
+- Openstack
 - FastAPI, Sqlalchemy, alembic
 - MySql, Redis, Kafka
 - Gitlab CI/CD

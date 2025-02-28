@@ -5,5 +5,6 @@
 
    cloud-api
    cloud-alarm
+   cloud-tunnel
    cloud-task-manager
    cloud-pipeline
