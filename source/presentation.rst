@@ -14,7 +14,6 @@
 
     - `발표자료 <https://bit.ly/4esTADM>`_
 
-----
 
 
 오픈소스 컨트리뷰션 아카데미 발표
@@ -28,7 +27,6 @@
 
     - `발표자료 <https://bit.ly/4gFH99b>`_
 
-----
 
 
 Openstack Asia Meetup 발표
@@ -42,7 +40,6 @@ Openstack Asia Meetup 발표
 
     - `발표자료 <https://bit.ly/4h0YgCz>`_
 
-----
 
 
 Openstack 멘토링 테스트 코드 설명 발표
@@ -56,7 +53,6 @@ Openstack 멘토링 테스트 코드 설명 발표
 
     - `발표자료 <https://bit.ly/4gNxCwD>`_
 
-----
 
 
 Openstack Keystone 소개 및 분석 발표
@@ -70,7 +66,6 @@ Openstack Keystone 소개 및 분석 발표
 
     - `발표자료 <https://docs.google.com/presentation/d/1Z8XnqquPMszjnQZsWStGY-TZKYxGqBBr/edit?usp=sharing&ouid=106747334860307993770&rtpof=true&sd=true>`_
 
-----
 
 
 보일러플레이트 프로젝트 소개
@@ -84,7 +79,6 @@ Openstack Keystone 소개 및 분석 발표
 
     - `발표자료 <https://docs.google.com/presentation/d/1CuWeY_4nhOV6xn-8WHtwN39uerbsDaEf/edit?usp=sharing&ouid=106747334860307993770&rtpof=true&sd=true>`_
 
-----
 
 
 Openstack 동적 플러그인 로딩 발표
