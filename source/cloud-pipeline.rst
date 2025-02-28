@@ -6,32 +6,36 @@
 프로젝트 개요
 -------------
 
-.. image:: _static/cloud-pipeline/파이프라인-컨샙.png
-    :align: center
-    :width: 800px
+    .. image:: _static/cloud-pipeline/파이프라인-컨샙.png
+        :align: center
+        :width: 800px
 
-팀에서 사용하는 CI 관련 스크립트를 표준화 하고 모든 프로젝트에서 참조할 수 있게 하는 공통 파이프라인 스크립트를 만드는 프로젝트
+    팀에서 사용하는 CI 관련 스크립트를 표준화 하고 모든 프로젝트에서 참조할 수 있게 하는 공통 파이프라인 스크립트를 만드는 프로젝트
 
 핵심 기능
 ---------
 
-- 표준화 된 CI/CD 스크립트
-- CI/CD 단계에서 스크립트를 하나의 레포지토리에서 관리할 수 있는 형태로 구현
-- 재사용 가능한 CI JOB을 제공
+    - 표준화 된 CI/CD 스크립트
+    - CI/CD 단계에서 스크립트를 하나의 레포지토리에서 관리할 수 있는 형태로 구현
+    - 재사용 가능한 CI JOB을 제공
+
+    .. image:: _static/cloud-pipeline/표준-파이프라인-예시.png
+        :align: center
+        :width: 800px
 
 개발 환경
 ---------
 
-- Gitlab CI/CD
-- yaml
+    - Gitlab CI/CD
+    - yaml
 
 해결 방법
 ---------
 
-- Project include 로 다른 gitlab 레포지토리 에서 파일을 가져와 include
-- hidden job, extends를 통한 브랜치 별 job 추상화
-- 파이프라인 스크립트에서 배포관련 템플릿을 clone 후 사용
-- yaml anchor를 통해 스크립트 간소화
+    - Project include 로 다른 gitlab 레포지토리 에서 파일을 가져와 include
+    - hidden job, extends를 통한 브랜치 별 job 추상화
+    - 파이프라인 스크립트에서 배포관련 템플릿을 clone 후 사용
+    - yaml anchor를 통해 스크립트 간소화
 
 성과
 ----
@@ -42,10 +46,6 @@ Before
     - 레포 마다 독립적인 CI/CD 스크립트를 사용하고 있어 유지보수가 어려움
     - CI/CD 를 실행 시키기 위한 helm template, 패키징 관련 파일이 모든 레포지토리에 존재
 
-
-    .. image:: _static/cloud-pipeline/표준-파이프라인-예시.png
-        :align: center
-        :width: 800px
 
     .. image:: _static/cloud-pipeline/파이프라인-파일.png
         :align: center
