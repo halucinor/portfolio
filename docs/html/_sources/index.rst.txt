@@ -55,4 +55,3 @@ Contact
    project
    outside-work
    presentation
-   award
