@@ -6,30 +6,42 @@ Openstack 기반 클라우드 플랫폼 개발
 프로젝트 개요
 -------------
 
-클라우드 기본 자원을 제공하기 위한 백엔드 REST API 서버 개발
+    .. image:: _static/cloud-api/cloud-api-표지.png
+        :align: center
+        :width: 800px
 
-- 가상 Network(VPC) API
-- Volume(Block Storage) API
-- SSHkey API
-- Peering Gateway API
-- NAS API
+    **Openstack 기반의 클라우드 플랫폼을 만들기 위한 백엔드 시스템 개발 프로젝트 입니다.**
 
+    - 가상 Network(VPC) API
+    - Volume(Block Storage) API
+    - SSHkey API
+    - Peering Gateway API
+    - NAS API
+    - FileBackup API
+
+    위와 같은 클라우드를 사용하기 위한 기본 자원을 제공하는 API 서버를 개발하고 있습니다.
 
 개발 환경
 ---------
 
-- Python 3.11
-- Openstack
-- FastAPI, Sqlalchemy, alembic
-- MySql, Redis, Kafka
-- Gitlab CI/CD
+    - Language : ``Python 3.11``
+    - Framework : ``FastAPI``
+    - ORM : ``Sqlalchemy``, ``Alembic``
+    - Cloud Infra : ``Openstack``
+    - DB : ``MySql``, ``Redis``
+    - MQ : ``Kafka``
+    - Deploy : ``Docker``, ``k8s``, ``Gitlab CI/CD``
 
 아키텍처
 --------
 
-.. image:: _static/cloud-api/cloud-api-architecture.png
-    :align: center
-    :width: 800px
+    .. image:: _static/cloud-api/cloud-api-architecture.png
+        :align: center
+        :width: 800px
+
+    - ``MSA`` 기반의 아키텍처로 서비스를 분리하여 개발
+    - 인증/인가 서비스, 클라우드 자원 관리 서비스, 클라우드 자원 모니터링 서비스로 구성
+    - ``Kafka`` 를 사용해 비동기적으로 서비스 간 자원 상태 동기화 처리
 
 역할 및 기여
 ------------
@@ -37,12 +49,14 @@ Openstack 기반 클라우드 플랫폼 개발
 주요 업무
 ^^^^^^^^^
 
-    - FastAPI를 활용한 프로젝트 구조 설계/구현
-    - 클라우드 자원과 관련된 DB 스키마, API 스펙 설계/구현
-    - 비동기 프로세스 설계 및 구현
+    - ``FastAPI`` 를 활용한 프로젝트 구품 설계/구현
+    - 클라우드 도메인의 상품 분석 및 API 설계
+    - 클라우드 자원과 관련된 DB 스키마 설계
+    - 아키텍처 개선
+    - `비동기 프로세스 설계 및 구현 <cloud-task-manager.rst>`_
 
-개선 사항
-^^^^^^^^^
+주요 개선 사항
+^^^^^^^^^^^^^^
 
     1. Sqlalchemy 버전 업그레이드 (1.4 -> 2.0)
         - 프로젝트에 적용된 SqlAlchemy 버전을 업그레이드 하는 작업을 수행
@@ -55,9 +69,9 @@ Openstack 기반 클라우드 플랫폼 개발
         - alembic을 도입, 배포 후 애플리케이션 실행 시점에 자동으로 최신 버전의 DB로 업그레이드할 수 있게 개선
 
     3. Async-Blocking 구조 개선
-        - 기존 프로젝트에는 경로 함수를 async def로 작성해 비동기 처리하도록 설계되어 있음
-        - async 함수에 sqlalchemy 동기 세션을 사용해 async-blocking 현상 발생
-        - 해당 코드를 sqlalchemy 비동기 세션을 사용하는 방식으로 변경하는 리팩토링 진행
+        - 기존 프로젝트에는 경로 함수를 async def로 작성해 비동기 처리하도록 설계
+        - async 함수에 DB 쿼리를 동기적으로 수행하는 코드가 있어 경우 async-blocking 현상 발생
+        - 해당 코드를 sqlalchemy 의 비동기 세션을 사용하는 방식으로 변경하는 리팩토링 진행
 
     4. 단위테스트, 테스트 프레임워크를 적용해 테스트 코드 생산성 향상
         - DB를 사용하는 통합 테스트를 성공/실패 모든 테스트 케이스에 사용되는 상황

@@ -6,9 +6,10 @@
 프로젝트 개요
 -------------
 
-클라우드 서비스의 비동기 프로세스 구조를 개선하는 프로젝트 입니다.
-이전 구조에서는 오픈스택을 제어하고 자원 정보를 관리하는 cloud-api 에서 비동기 처리를 위해 오픈스택에서 발행하는 kafka의 notification 토픽을 사용하였습니다.
-비동기 처리를 위해 오픈스택에 의존하는 구조에서 발생하는 문제를 해결하기 위해 메시지 처리 프로세스를 개선하였습니다.
+    클라우드 서비스의 비동기 프로세스 구조를 개선하는 프로젝트 입니다.
+
+    레거시 구조에서는 오픈스택을 제어하고 자원 정보를 관리하는 ``cloud-api`` 에서 비동기 처리를 위해 오픈스택에서 발행하는 kafka 토픽을 사용하였습니다.
+    비동기 처리를 위해 오픈스택에 의존하는 구조에서 메시지 처리 시 ``Blocking`` 이 발생하였고 이 문제를 해결하기 위해 메시지 처리 프로세스를 개선하였습니다.
 
 
 역할 및 기여
@@ -21,10 +22,11 @@
 개발 환경
 ---------
 
-- Python 3.11
-- FastAPI, Sqlalchemy, alembic
-- MySql, Kafka
-- Gitlab CI/CD
+- Language : ``Python 3.11``
+- Framework : ``FastAPI``
+- Library : ``Sqlalchemy``, ``Alembic``, ``confluent_kafka``
+- DB : ``MySql``
+- MQ : ``Kafka``
 
 비동기 메시지 처리 흐름
 -----------------------
@@ -38,7 +40,8 @@ Before
 
     - 오픈스택의 메시지 큐(notification)를 사용하여 비동기 처리
     - notification 메시지에는 비동기 처리를 위한 모든 정보가 포함되어 있지 않아. Sync DB 에 의존하는 문제 발생
-    - Sync DB를 Polling 하는 blocking 이 발생해 메시지 처리 성능 저하 발생 (3초간 Polling)
+    - Sync DB를 ``Polling`` 하는 과정에서 blocking 이 발생해 메시지 처리 성능 저하 발생 (3초간 Polling)
+    - 대량의 메시지 발생 시 메시지 처리 속도 저하 발생
 
 After
 ^^^^^
@@ -48,10 +51,10 @@ After
         :width: 800px
 
     - 오픈스택 메시지 큐 의존성을 제거
-    - service.request 메시지를 직접 consume 하여 비동기 처리
-    - 재시도 큐(service.retry)를 사용해 오픈스택 자원이 처리 불가능한 경우 재시도 할 수 있도록 변경
+    - ``service.request`` 메시지를 직접 consume 하여 비동기 처리
+    - 재시도 큐( ``service.retry`` )를 사용해 오픈스택 자원이 처리 불가능한 경우 재시도 할 수 있도록 변경
     - consumer와 실제 로직이 들어있는 api 서버를 분리하여 유지보수 용이성 증가
-    - 비동기 처리 속도 향상
+    - 대량의 메시지 발생에도 메시지 처리 성능 저하가 발생하지 않도록 설계
 
 
 kafka 메시지 Consumer
@@ -62,10 +65,10 @@ kafka 메시지 Consumer
         :width: 800px
 
 
-    1. `service.request`, `service.retry` 메시지를 consume 하여 비동기 처리
+    1. ``service.request``, ``service.retry`` 메시지를 consume 하여 비동기 처리
     2. dispatcher에서 메시지를 처리할 수 있는 handler로 작업 분배
-    3. handler에서 메시지를 처리할 수 없는 상화이면 쓰레드로 delay_retry 함수를 실행
-    4. 일정 시간동안 sleep 후 service.retry 큐에 메시지를 전송
+    3. handler에서 메시지를 처리할 수 없는 상황이면 쓰레드로 ``delay_retry`` 함수를 실행
+    4. 일정 시간동안 sleep 후 ``service.retry`` 큐에 메시지를 전송
 
 
 Consumer 코드

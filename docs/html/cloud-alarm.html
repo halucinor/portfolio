@@ -50,13 +50,13 @@
 <li class="toctree-l2"><a class="reference internal" href="cloud-api.html">Openstack 기반 클라우드 플랫폼 개발</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">클라우드 자원 사용률 알람 서비스</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id2">프로젝트 개요</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">핵심 기능</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">역할 및 기여</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">개발 환경</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">아키텍처</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">의존성 구조</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">핵심 기능</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">역할 및 기여</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">개발 환경</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">아키텍처</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">의존성 구조</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#erd">ERD</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">성과 및 결과</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">성과 및 결과</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="cloud-tunnel.html">사설 네트워크를 활용한 메트릭 수집 설정 자동화 시스템</a></li>
@@ -66,7 +66,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="outside-work.html">활동</a></li>
 <li class="toctree-l1"><a class="reference internal" href="presentation.html">세미나 발표</a></li>
-<li class="toctree-l1"><a class="reference internal" href="award.html">수상 내역</a></li>
 </ul>
 
         </div>
@@ -102,65 +101,66 @@
 <blockquote>
 <div><a class="reference internal image-reference" href="_images/모니터링-알람-서비스구조.png"><img alt="_images/%EB%AA%A8%EB%8B%88%ED%84%B0%EB%A7%81-%EC%95%8C%EB%9E%8C-%EC%84%9C%EB%B9%84%EC%8A%A4%EA%B5%AC%EC%A1%B0.png" class="align-center" src="_images/%EB%AA%A8%EB%8B%88%ED%84%B0%EB%A7%81-%EC%95%8C%EB%9E%8C-%EC%84%9C%EB%B9%84%EC%8A%A4%EA%B5%AC%EC%A1%B0.png" style="width: 800px;" />
 </a>
-<ul class="simple">
-<li><p>클라우드 자원 <a class="footnote-reference brackets" href="#id11" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> 의 사용률을 모니터링</p></li>
-<li><p>사용률이 일정 수준 이상(임계치)으로 증가할 경우 등록된 사용자에게 알람 발송</p></li>
-</ul>
+<p><strong>클라우드 자원 모니터링 시스템과 연동하여 클라우드 자원 사용률을 모니터링하고 알람을 발송하는 서비스 입니다.</strong></p>
+<p>알람 설정/관리 프로젝트 인 <code class="docutils literal notranslate"><span class="pre">cloud-alarm</span></code> 서버, 모니터링 시스템와 연결하고 메트릭을 수집하는 <code class="docutils literal notranslate"><span class="pre">모니터링</span> <span class="pre">서버</span></code> ,
+그리고 임계치 이상의 알람 발송 신호가 발생했을 때 알람을 발송하고 발송 내역을 관리하는 <code class="docutils literal notranslate"><span class="pre">발송</span> <span class="pre">관리</span> <span class="pre">시스템</span></code> 으로 구성되어 있습니다.</p>
 </div></blockquote>
 </section>
-<section id="id4">
-<h2>핵심 기능<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<section id="id3">
+<h2>핵심 기능<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
 <blockquote>
 <div><ul class="simple">
-<li><p>클라우드 자원의 <code class="docutils literal notranslate"><span class="pre">CPU</span></code>, <code class="docutils literal notranslate"><span class="pre">메모리</span></code>, <code class="docutils literal notranslate"><span class="pre">디스크</span></code>, <code class="docutils literal notranslate"><span class="pre">네트워트</span></code> 사용량에 대한 알람 설정</p></li>
-<li><p>모니터링 시스템 <a class="footnote-reference brackets" href="#id12" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> 과의 연동</p></li>
+<li><p>클라우드 자원의 <code class="docutils literal notranslate"><span class="pre">CPU</span></code>, <code class="docutils literal notranslate"><span class="pre">메모리</span></code>, <code class="docutils literal notranslate"><span class="pre">스토리지</span></code>, <code class="docutils literal notranslate"><span class="pre">네트워크</span></code> 사용량에 대한 알람 설정</p></li>
+<li><p>모니터링 시스템 <a class="footnote-reference brackets" href="#id10" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> 과의 연동</p></li>
 <li><p>모니터링 시스템으로 부터 발생하는 알람 신호 처리</p></li>
 <li><p>알람 발송 처리 (<code class="docutils literal notranslate"><span class="pre">SMS</span></code>, <code class="docutils literal notranslate"><span class="pre">Email</span></code>)</p></li>
 </ul>
 </div></blockquote>
 </section>
-<section id="id6">
-<h2>역할 및 기여<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<section id="id5">
+<h2>역할 및 기여<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
 <blockquote>
 <div><ul class="simple">
 <li><p>시스템, 소프트웨어 아키텍처, DB 스키마 설계</p></li>
-<li><p>FastAPI 서버 구현</p></li>
+<li><p>알람 설정 및 관리 시스템인 <code class="docutils literal notranslate"><span class="pre">cloud-alarm</span></code> 서버 구현</p></li>
 <li><p>네트워크 트래픽 수집 스케줄러 구현</p></li>
 <li><p>프로젝트 매니저</p></li>
 </ul>
 </div></blockquote>
 </section>
-<section id="id7">
-<h2>개발 환경<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<section id="id6">
+<h2>개발 환경<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
 <blockquote>
 <div><ul class="simple">
-<li><p>FastAPI, Sqlalchemy, alembic</p></li>
-<li><p>Python Apscheduler</p></li>
-<li><p>Dependency injector</p></li>
-<li><p>MySql</p></li>
+<li><p>Language : <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">3.11</span></code></p></li>
+<li><p>Framework : <code class="docutils literal notranslate"><span class="pre">FastAPI</span></code></p></li>
+<li><p>Library :  <code class="docutils literal notranslate"><span class="pre">Sqlalchemy</span></code>, <code class="docutils literal notranslate"><span class="pre">Alembic</span></code>, <code class="docutils literal notranslate"><span class="pre">Aspscheduler</span></code>, <code class="docutils literal notranslate"><span class="pre">Dependency</span> <span class="pre">injector</span></code></p></li>
+<li><p>DB: <code class="docutils literal notranslate"><span class="pre">MySql</span></code></p></li>
+<li><p>MQ: <code class="docutils literal notranslate"><span class="pre">Kafka</span></code></p></li>
+<li><p>Monitoring System: <code class="docutils literal notranslate"><span class="pre">Zabbix</span></code></p></li>
 </ul>
 </div></blockquote>
 </section>
-<section id="id8">
-<h2>아키텍처<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<section id="id7">
+<h2>아키텍처<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
 <blockquote>
 <div><a class="reference internal image-reference" href="_images/cloud-alarm-아키택처.png"><img alt="_images/cloud-alarm-%EC%95%84%ED%82%A4%ED%83%9D%EC%B2%98.png" class="align-center" src="_images/cloud-alarm-%EC%95%84%ED%82%A4%ED%83%9D%EC%B2%98.png" style="width: 800px;" />
 </a>
 <ul class="simple">
-<li><p>cloud-alarm 서버를 통해 알람 정보 등록/전송 프로세스 관리</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cloud-alarm</span></code> 서버를 통해 알람 정보 등록/전송 프로세스 관리</p></li>
 <li><p>자원타입(<code class="docutils literal notranslate"><span class="pre">인스턴스</span></code>, <code class="docutils literal notranslate"><span class="pre">네트워크</span></code>)에 맞는 모니터링 서버와 통신하며 알람 기능 제공</p></li>
-<li><p>kafka 를 사용해 알람 메시지 발송 처리</p></li>
+<li><p>kafka 를 사용해 알람 메시지 발송 처리 비동기화</p></li>
 </ul>
 </div></blockquote>
 </section>
-<section id="id9">
-<h2>의존성 구조<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
+<section id="id8">
+<h2>의존성 구조<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
 <blockquote>
 <div><a class="reference internal image-reference" href="_images/알람-의존성-그래프.png"><img alt="_images/%EC%95%8C%EB%9E%8C-%EC%9D%98%EC%A1%B4%EC%84%B1-%EA%B7%B8%EB%9E%98%ED%94%84.png" class="align-center" src="_images/%EC%95%8C%EB%9E%8C-%EC%9D%98%EC%A1%B4%EC%84%B1-%EA%B7%B8%EB%9E%98%ED%94%84.png" style="width: 800px;" />
 </a>
 <ul class="simple">
-<li><p>Facade 패턴을 사용해 서비스 간 의존성을 최소화</p></li>
-<li><p>서비스 로직 재사용성 향상</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Facade</span></code> 패턴을 사용해 서비스 간 의존성을 최소화</p></li>
+<li><p>서비스 로직의 재사용성 향상</p></li>
 </ul>
 </div></blockquote>
 </section>
@@ -171,13 +171,13 @@
 </a>
 </div></blockquote>
 </section>
-<section id="id10">
-<h2>성과 및 결과<a class="headerlink" href="#id10" title="Link to this heading"></a></h2>
+<section id="id9">
+<h2>성과 및 결과<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
 <blockquote>
 <div><ul class="simple">
 <li><p>서비스의 안정적 배포/운영</p></li>
 <li><dl class="simple">
-<dt>모니터링, 알람 관리, 발송 시스템을 분리해서 구현</dt><dd><ul>
+<dt>모니터링, 알람 관리, 발송 관리를 분리한 시스템을 설계</dt><dd><ul>
 <li><p>시스템 분리를 통해 유지보수 가능한 시스템 구축</p></li>
 <li><p>장애 전파 범위 최소화</p></li>
 <li><p>서비스 확장성 확보</p></li>
@@ -188,12 +188,8 @@
 </ul>
 </div></blockquote>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id11" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">1</a><span class="fn-bracket">]</span></span>
-<p>클라우드 자원: 인스턴스, 네트워크, 스토리지 등 클라우드 서비스의 자원</p>
-</aside>
-<aside class="footnote brackets" id="id12" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">2</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id10" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">1</a><span class="fn-bracket">]</span></span>
 <p>Zabbix, TMS: 모니터링 시스템</p>
 </aside>
 </aside>

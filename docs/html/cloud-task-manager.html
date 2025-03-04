@@ -73,7 +73,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="outside-work.html">활동</a></li>
 <li class="toctree-l1"><a class="reference internal" href="presentation.html">세미나 발표</a></li>
-<li class="toctree-l1"><a class="reference internal" href="award.html">수상 내역</a></li>
 </ul>
 
         </div>
@@ -106,9 +105,11 @@
 <p><strong>수행 기간 : 2025.01 ~ 현재 (3개월)</strong></p>
 <section id="id2">
 <h2>프로젝트 개요<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
-<p>클라우드 서비스의 비동기 프로세스 구조를 개선하는 프로젝트 입니다.
-이전 구조에서는 오픈스택을 제어하고 자원 정보를 관리하는 cloud-api 에서 비동기 처리를 위해 오픈스택에서 발행하는 kafka의 notification 토픽을 사용하였습니다.
-비동기 처리를 위해 오픈스택에 의존하는 구조에서 발생하는 문제를 해결하기 위해 메시지 처리 프로세스를 개선하였습니다.</p>
+<blockquote>
+<div><p>클라우드 서비스의 비동기 프로세스 구조를 개선하는 프로젝트 입니다.</p>
+<p>레거시 구조에서는 오픈스택을 제어하고 자원 정보를 관리하는 <code class="docutils literal notranslate"><span class="pre">cloud-api</span></code> 에서 비동기 처리를 위해 오픈스택에서 발행하는 kafka 토픽을 사용하였습니다.
+비동기 처리를 위해 오픈스택에 의존하는 구조에서 메시지 처리 시 <code class="docutils literal notranslate"><span class="pre">Blocking</span></code> 이 발생하였고 이 문제를 해결하기 위해 메시지 처리 프로세스를 개선하였습니다.</p>
+</div></blockquote>
 </section>
 <section id="id3">
 <h2>역할 및 기여<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
@@ -121,10 +122,11 @@
 <section id="id4">
 <h2>개발 환경<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>Python 3.11</p></li>
-<li><p>FastAPI, Sqlalchemy, alembic</p></li>
-<li><p>MySql, Kafka</p></li>
-<li><p>Gitlab CI/CD</p></li>
+<li><p>Language : <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">3.11</span></code></p></li>
+<li><p>Framework : <code class="docutils literal notranslate"><span class="pre">FastAPI</span></code></p></li>
+<li><p>Library : <code class="docutils literal notranslate"><span class="pre">Sqlalchemy</span></code>, <code class="docutils literal notranslate"><span class="pre">Alembic</span></code>, <code class="docutils literal notranslate"><span class="pre">confluent_kafka</span></code></p></li>
+<li><p>DB : <code class="docutils literal notranslate"><span class="pre">MySql</span></code></p></li>
+<li><p>MQ : <code class="docutils literal notranslate"><span class="pre">Kafka</span></code></p></li>
 </ul>
 </section>
 <section id="id5">
@@ -137,7 +139,8 @@
 <ul class="simple">
 <li><p>오픈스택의 메시지 큐(notification)를 사용하여 비동기 처리</p></li>
 <li><p>notification 메시지에는 비동기 처리를 위한 모든 정보가 포함되어 있지 않아. Sync DB 에 의존하는 문제 발생</p></li>
-<li><p>Sync DB를 Polling 하는 blocking 이 발생해 메시지 처리 성능 저하 발생 (3초간 Polling)</p></li>
+<li><p>Sync DB를 <code class="docutils literal notranslate"><span class="pre">Polling</span></code> 하는 과정에서 blocking 이 발생해 메시지 처리 성능 저하 발생 (3초간 Polling)</p></li>
+<li><p>대량의 메시지 발생 시 메시지 처리 속도 저하 발생</p></li>
 </ul>
 </div></blockquote>
 </section>
@@ -148,10 +151,10 @@
 </a>
 <ul class="simple">
 <li><p>오픈스택 메시지 큐 의존성을 제거</p></li>
-<li><p>service.request 메시지를 직접 consume 하여 비동기 처리</p></li>
-<li><p>재시도 큐(service.retry)를 사용해 오픈스택 자원이 처리 불가능한 경우 재시도 할 수 있도록 변경</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">service.request</span></code> 메시지를 직접 consume 하여 비동기 처리</p></li>
+<li><p>재시도 큐( <code class="docutils literal notranslate"><span class="pre">service.retry</span></code> )를 사용해 오픈스택 자원이 처리 불가능한 경우 재시도 할 수 있도록 변경</p></li>
 <li><p>consumer와 실제 로직이 들어있는 api 서버를 분리하여 유지보수 용이성 증가</p></li>
-<li><p>비동기 처리 속도 향상</p></li>
+<li><p>대량의 메시지 발생에도 메시지 처리 성능 저하가 발생하지 않도록 설계</p></li>
 </ul>
 </div></blockquote>
 </section>
@@ -162,10 +165,10 @@
 <div><a class="reference internal image-reference" href="_images/cloud-task-consumer.png"><img alt="_images/cloud-task-consumer.png" class="align-center" src="_images/cloud-task-consumer.png" style="width: 800px;" />
 </a>
 <ol class="arabic simple">
-<li><p><cite>service.request</cite>, <cite>service.retry</cite> 메시지를 consume 하여 비동기 처리</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">service.request</span></code>, <code class="docutils literal notranslate"><span class="pre">service.retry</span></code> 메시지를 consume 하여 비동기 처리</p></li>
 <li><p>dispatcher에서 메시지를 처리할 수 있는 handler로 작업 분배</p></li>
-<li><p>handler에서 메시지를 처리할 수 없는 상화이면 쓰레드로 delay_retry 함수를 실행</p></li>
-<li><p>일정 시간동안 sleep 후 service.retry 큐에 메시지를 전송</p></li>
+<li><p>handler에서 메시지를 처리할 수 없는 상황이면 쓰레드로 <code class="docutils literal notranslate"><span class="pre">delay_retry</span></code> 함수를 실행</p></li>
+<li><p>일정 시간동안 sleep 후 <code class="docutils literal notranslate"><span class="pre">service.retry</span></code> 큐에 메시지를 전송</p></li>
 </ol>
 </div></blockquote>
 </section>
