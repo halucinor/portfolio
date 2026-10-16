@@ -1,0 +1,167 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ko" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Openstack 기여 &mdash; 포트폴리오 0.12.0 문서</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=fcea26a9" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=b6975439"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=afa94a99"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="색인" href="genindex.html" />
+    <link rel="search" title="검색" href="search.html" />
+    <link rel="next" title="세미나 발표" href="presentation.html" />
+    <link rel="prev" title="기술 세미나 위원회" href="seminar.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            포트폴리오
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="project.html">프로젝트</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="outside-work.html">활동</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="seminar.html">기술 세미나 위원회</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Openstack 기여</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#openstack-sdk">Openstack SDK 기여 내역</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#stack-action">1. stack._action() 예외처리 로직 추가</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stack-suspend-resume">2. stack suspend, resume 기능 추가</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">3. 누락 문서 추가</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="presentation.html">세미나 발표</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">포트폴리오</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="outside-work.html">활동</a></li>
+      <li class="breadcrumb-item active">Openstack 기여</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/openstack-contribution.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="openstack">
+<h1>Openstack 기여<a class="headerlink" href="#openstack" title="Link to this heading"></a></h1>
+<section id="openstack-sdk">
+<h2>Openstack SDK 기여 내역<a class="headerlink" href="#openstack-sdk" title="Link to this heading"></a></h2>
+<section id="stack-action">
+<h3>1. stack._action() 예외처리 로직 추가<a class="headerlink" href="#stack-action" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>기존 오픈스택 API를 활용하는 코드에서 처리되어야 하는 예외코드(400,401,404)에 대한 예외 처리 기능이 누락</p></li>
+<li><p>예외처리 로직을 추가하고 테스트 코드를 작성해서 패치셋을 작성</p></li>
+</ul>
+<a class="reference internal image-reference" href="_images/오픈스택-stack-action.png"><img alt="_images/%EC%98%A4%ED%94%88%EC%8A%A4%ED%83%9D-stack-action.png" class="align-center" src="_images/%EC%98%A4%ED%94%88%EC%8A%A4%ED%83%9D-stack-action.png" style="width: 800px;" />
+</a>
+<ul class="simple">
+<li><p>리뷰 내역 : <a class="reference external" href="https://review.opendev.org/c/openstack/openstacksdk/+/891089">https://review.opendev.org/c/openstack/openstacksdk/+/891089</a></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="stack-suspend-resume">
+<h3>2. stack suspend, resume 기능 추가<a class="headerlink" href="#stack-suspend-resume" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Stack 자원에 대한 정지(suspend), 재시작(resume)을 사용할 수 있는 SDK 함수가 미구현</p></li>
+<li><p>suspend, resume 기능을 구현 후 기능/단위 테스트를 작성</p></li>
+</ul>
+<a class="reference internal image-reference" href="_images/오픈스택-suspend-resume.png"><img alt="_images/%EC%98%A4%ED%94%88%EC%8A%A4%ED%83%9D-suspend-resume.png" class="align-center" src="_images/%EC%98%A4%ED%94%88%EC%8A%A4%ED%83%9D-suspend-resume.png" style="width: 800px;" />
+</a>
+<ul class="simple">
+<li><p>리뷰 내역 <a class="reference external" href="https://review.opendev.org/c/openstack/openstacksdk/+/892156">https://review.opendev.org/c/openstack/openstacksdk/+/892156</a></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id1">
+<h3>3. 누락 문서 추가<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Openstack SDK에서 stack 기능을 설명하는 문서가 누락되어 해당 문서를 추가</p></li>
+<li><p>추가 된 문서 링크 - <a class="reference external" href="https://docs.openstack.org/openstacksdk/latest/user/proxies/orchestration.html#stack-operations%20%20Copy">Orchestration API — openstacksdk 4.2.1.dev14 documentation</a></p></li>
+</ul>
+<a class="reference internal image-reference" href="_images/오픈스택-stack-docs.png"><img alt="_images/%EC%98%A4%ED%94%88%EC%8A%A4%ED%83%9D-stack-docs.png" class="align-center" src="_images/%EC%98%A4%ED%94%88%EC%8A%A4%ED%83%9D-stack-docs.png" style="width: 800px;" />
+</a>
+<ul class="simple">
+<li><p>리뷰 내역 <a class="reference external" href="https://review.opendev.org/c/openstack/openstacksdk/+/921863">https://review.opendev.org/c/openstack/openstacksdk/+/921863</a></p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="seminar.html" class="btn btn-neutral float-left" title="기술 세미나 위원회" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="presentation.html" class="btn btn-neutral float-right" title="세미나 발표" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Seungju Baek.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
